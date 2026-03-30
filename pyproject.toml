@@ -1,0 +1,11 @@
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "rae-core"
+version = "1.1.0"
+dependencies = ["pydantic>=2.0.0"]
+
+[tool.setuptools.package-dir]
+"" = "src"

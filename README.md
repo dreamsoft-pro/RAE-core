@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-# RAE-core
-=======
 # RAE-core (Reflective Agentic Engine Core)
 
 The cognitive substrate and communication protocol for the Silicon Oracle RAE Suite v3.
@@ -23,4 +20,3 @@ RAE-core defines the "DNA" of the agentic factory. It provides versioned Pydanti
 
 ---
 Managed by Silicon Oracle v3.2
->>>>>>> 5cd8c1a (feat(core): initial release of RAE-core DNA (v1.1.0) according to Plan v1.5)

@@ -1,3 +1,7 @@
-CONTRACT_VERSION = "1.1.0"
-SUPPORTED_SERIES = [(1, 0), (1, 1)]
-MESH_MIN_SUPPORTED = "1.0.0"
+"""Version information for RAE-core."""
+
+__version__ = "3.6.1"
+VERSION = __version__
+__author__ = "Grzegorz Leśniowski"
+__email__ = "contact@dreamsoft.pro"
+__license__ = "Apache-2.0"

@@ -1,0 +1,45 @@
+# RAE Benchmark Templates (ISO 42001 Compliant)
+# Used by IndustrialFactory to generate diverse, unique, and hard test data.
+
+domains:
+  industrial:
+    logs:
+      patterns:
+        - "{timestamp} [{machine}] {level} {service}: Request ID {uuid} processed in {latency}ms"
+        - "{timestamp} [{machine}] {level} {service}: Connection pool {pool_id} overflow ({count}/100)"
+        - "{timestamp} [{machine}] {level} {service}: Temperature sensor {sensor_id} reported {val}C (Threshold: {threshold}C)"
+        - "{timestamp} [{machine}] {level} {service}: Maintenance alert: Component {part_id} reached {percent}% wear"
+      machines: ["TJ02", "TJ01", "KRONOS-5", "APOLLO-12"]
+      services: ["api-gateway", "motion-ctrl", "thermal-sync", "ink-flow", "vacuum-pump"]
+      levels: ["INFO", "WARN", "ERROR", "CRITICAL"]
+    
+    tickets:
+      patterns:
+        - "[{type}] {component} failure: {description}. Affected Job: {job_id}. Priority: {priority}"
+        - "Maintenance Required: {component} {description}. Serial Number: {sn}"
+      types: ["BUG", "HARDWARE", "NETWORK", "CALIBRATION"]
+      components: ["Printhead", "Carriage", "UV-Lamp", "Encoder-Strip"]
+      priorities: ["LOW", "MEDIUM", "HIGH", "EMERGENCY"]
+      descriptions: ["Intermittent signal loss", "Vertical banding detected", "Overheating during purge", "Communication timeout"]
+
+  academic:
+    physics:
+      patterns:
+        - "Research Paper: Analysis of {particle} behavior in {environment}. Conclusion: {result}."
+        - "Theoretical Model: {theory} predicts {effect} under {condition}."
+      particles: ["Muon", "Tau-Neutrino", "Quark-Gluon Plasma"]
+      environments: ["LHC", "Cryogenic Chamber", "Zero-G"]
+      theories: ["Superstring Theory", "Loop Quantum Gravity", "Standard Model"]
+    
+    poetry:
+      patterns:
+        - "Poem by {author}: '{title}'. Theme: {theme}."
+      authors: ["Wislawa Szymborska", "Czeslaw Milosz", "Adam Mickiewicz"]
+      themes: ["Solitude", "Passing of Time", "Nature's Silence", "Historical Memory"]
+
+  nine_five:
+    office:
+      patterns:
+        - "Internal memo from {department}: {topic}. Policy code {policy_code}."
+      departments: ["Compliance", "HR", "Legal", "Finance"]
+      topics: ["New ISO 27001 requirements", "Work-from-home adjustment", "Quarterly audit results"]

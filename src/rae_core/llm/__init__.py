@@ -13,6 +13,8 @@ from rae_core.llm.strategies import (
     RoundRobinStrategy,
     SingleLLMStrategy,
 )
+from rae_core.llm.descriptor import CapabilityMatrix, ModelDescriptor
+from rae_core.llm.runtime import resolve_llm_runtime
 
 __all__ = [
     "LLMConfig",
@@ -25,4 +27,7 @@ __all__ = [
     "FallbackStrategy",
     "LoadBalancingStrategy",
     "RoundRobinStrategy",
+    "CapabilityMatrix",
+    "ModelDescriptor",
+    "resolve_llm_runtime",
 ]

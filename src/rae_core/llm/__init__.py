@@ -15,6 +15,12 @@ from rae_core.llm.strategies import (
 )
 from rae_core.llm.descriptor import CapabilityMatrix, ModelDescriptor
 from rae_core.llm.runtime import resolve_llm_runtime
+from rae_core.llm.security import (
+    CircuitBreaker,
+    CircuitBreakerOpenException,
+    StandaloneRateLimiter,
+    redact_secrets,
+)
 
 __all__ = [
     "LLMConfig",
@@ -30,4 +36,8 @@ __all__ = [
     "CapabilityMatrix",
     "ModelDescriptor",
     "resolve_llm_runtime",
+    "CircuitBreaker",
+    "CircuitBreakerOpenException",
+    "StandaloneRateLimiter",
+    "redact_secrets",
 ]

@@ -1,4 +1,5 @@
 import httpx
+import json
 import structlog
 from typing import Any, Optional, Dict, List
 from rae_core.interfaces.llm import ILLMProvider
@@ -174,7 +175,12 @@ class BridgeLLMProvider(ILLMProvider):
             data = resp.json()
             payload_out = data.get("payload", {})
             if "interaction_data" in payload_out:
-                return payload_out["interaction_data"].get("text", "")
+                inter_data = payload_out["interaction_data"]
+                if isinstance(inter_data, dict):
+                    if "text" in inter_data:
+                        return inter_data["text"]
+                    return json.dumps(inter_data)
+                return str(inter_data)
             return payload_out.get("text", "")
 
     async def count_tokens(self, text: str) -> int:

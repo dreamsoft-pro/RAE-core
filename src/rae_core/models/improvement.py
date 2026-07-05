@@ -10,6 +10,13 @@ class Hypothesis(BaseModel):
     target_metric: str
     origin: str = "lab"
 
+class Experiment(BaseModel):
+    experiment_id: str = Field(default_factory=lambda: str(uuid4()))
+    name: str
+    hypothesis_id: str
+    candidate: str
+    success_criteria: str
+
 class FailurePatternPack(BaseModel):
     pack_id: str = Field(default_factory=lambda: str(uuid4()))
     version: str = "1.0.0"
@@ -23,10 +30,11 @@ class InsightPack(BaseModel):
 
 class ImprovementProposal(BaseModel):
     proposal_id: str = Field(default_factory=lambda: str(uuid4()))
-    rationale: str
+    experiment_id: Optional[str] = None
+    rationale: Optional[str] = None
     proposed_patch: dict[str, Any] = Field(default_factory=dict)
     status: str = "draft"
-    promotion_requirements: List[str] = Field(default_factory=list)
+    promotion_requirements: Any = Field(default_factory=list)
 
 class PolicyPatchProposal(BaseModel):
     proposal_id: str = Field(default_factory=lambda: str(uuid4()))
@@ -36,9 +44,12 @@ class PolicyPatchProposal(BaseModel):
 
 class ExperimentRun(BaseModel):
     run_id: str = Field(default_factory=lambda: str(uuid4()))
-    proposal_id: str
+    proposal_id: Optional[str] = None
+    experiment_id: Optional[str] = None
     mode: str  # shadow | canary | offline
     result: str  # pass | fail
+    metrics: Dict[str, Any] = Field(default_factory=dict)
+    trace_id: Optional[str] = None
 
 class PromotionDecision(BaseModel):
     proposal_id: str
@@ -47,4 +58,5 @@ class PromotionDecision(BaseModel):
 
 class RollbackDecision(BaseModel):
     proposal_id: str
+    rollback_triggered: bool = False
     reason: str
